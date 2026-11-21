@@ -29,12 +29,12 @@ header{padding:16px 0}
 h1{font-weight:700;font-size:clamp(40px,8vw,72px);line-height:1.04;max-width:12ch}
 .sub{margin-top:16px;font-size:19px;color:var(--dark)}
 
-/* the one idea: a timeline strip, two clips ready, playhead parks at the out point */
+/* the one idea: a timeline strip, three clips ready, playhead parks at the out point */
 .strip{margin-top:32px;max-width:340px}
 .strip svg{display:block;width:100%;height:auto;overflow:visible}
 .strip p{margin-top:10px;font-size:16px;font-weight:500;color:var(--dark)}
 .head{animation:scrub 2.4s cubic-bezier(.45,0,.2,1) both}
-@keyframes scrub{from{transform:translateX(0)}to{transform:translateX(117px)}}
+@keyframes scrub{from{transform:translateX(0)}to{transform:translateX(147.4px)}}
 
 /* ready tools */
 .ready{padding:40px 0 8px}
@@ -68,7 +68,7 @@ footer{margin-top:auto;border-top:1px solid var(--crema);padding:24px 0 32px;fon
   .list{grid-template-columns:repeat(3,1fr)}
 }
 @media (prefers-reduced-motion:reduce){
-  .head{animation:none;transform:translateX(117px)}
+  .head{animation:none;transform:translateX(147.4px)}
 }
 </style>
 </head>
@@ -85,18 +85,19 @@ footer{margin-top:auto;border-top:1px solid var(--crema);padding:24px 0 32px;fon
     <h1>Your Good Cup tools start here.</h1>
     <p class="sub">Pick a tool and open it.</p>
     <div class="strip">
-      <svg viewBox="0 0 300 30" role="img" aria-label="Two of five tools are ready">
-        <rect x="0" y="8" width="56" height="16" rx="5" fill="#000"/>
-        <rect x="61" y="8" width="56" height="16" rx="5" fill="#000"/>
-        <rect x="122.75" y="8.75" width="54.5" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
-        <rect x="183.75" y="8.75" width="54.5" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
-        <rect x="244.75" y="8.75" width="54.5" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
+      <svg viewBox="0 0 300 30" role="img" aria-label="Three of six tools are ready">
+        <rect x="0.0" y="8" width="45.8" height="16" rx="5" fill="#000"/>
+        <rect x="50.8" y="8" width="45.8" height="16" rx="5" fill="#000"/>
+        <rect x="101.6" y="8" width="45.8" height="16" rx="5" fill="#000"/>
+        <rect x="153.15" y="8.75" width="44.3" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
+        <rect x="203.95" y="8.75" width="44.3" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
+        <rect x="254.75" y="8.75" width="44.3" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
         <g class="head">
           <rect x="-1" y="0" width="2" height="30" fill="#1B1B1B"/>
           <path d="M-5 0h10l-5 5z" fill="#1B1B1B"/>
         </g>
       </svg>
-      <p>2 of 5 ready</p>
+      <p>3 of 6 ready</p>
     </div>
   </div>
 </section>
@@ -116,6 +117,12 @@ footer{margin-top:auto;border-top:1px solid var(--crema);padding:24px 0 32px;fon
           <h2>Bag maker</h2>
           <p>Turn a sticker PDF into the exact studio bag, right in the browser.</p>
           <a class="btn" href="https://kirkvvisitacion-stack.github.io/goodcup-bagmaker/">Open bag maker</a>
+        </article>
+        <article class="card">
+          <span class="live"><span class="dot"></span>Live</span>
+          <h2>Post maker</h2>
+          <p>Put words on your photos for an IG carousel and Story, in the Good Cup fonts.</p>
+          <a class="btn" href="https://kirkvvisitacion-stack.github.io/goodcup-post-maker/">Open post maker</a>
         </article>
       </div>
     </div>
