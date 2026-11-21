@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Good Cup Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#000; --dark:#1B1B1B; --white:#fff; --crema:#EDE9E4; --cashew:#D1C8C1;
+  --muted:#5f5852;
+  --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--white);color:var(--black);font-family:var(--sans);font-size:17px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column}
+.wrap{width:100%;max-width:1000px;margin:0 auto;padding:0 20px}
+
+/* top bar */
+header{padding:16px 0}
+.lockup{display:inline-flex;align-items:center;min-height:44px}
+.lockup img{display:block;height:48px;width:auto}
+
+/* hero band */
+.hero{background:var(--crema);padding:48px 0 52px}
+h1{font-weight:700;font-size:clamp(40px,8vw,72px);line-height:1.04;max-width:12ch}
+.sub{margin-top:16px;font-size:19px;color:var(--dark)}
+
+/* the one idea: a timeline strip, two clips ready, playhead parks at the out point */
+.strip{margin-top:32px;max-width:340px}
+.strip svg{display:block;width:100%;height:auto;overflow:visible}
+.strip p{margin-top:10px;font-size:16px;font-weight:500;color:var(--dark)}
+.head{animation:scrub 2.4s cubic-bezier(.45,0,.2,1) both}
+@keyframes scrub{from{transform:translateX(0)}to{transform:translateX(117px)}}
+
+/* ready tools */
+.ready{padding:40px 0 8px}
+.grid{display:grid;gap:16px;grid-template-columns:1fr}
+.card{position:relative;background:var(--black);color:var(--white);border-radius:24px;padding:28px 24px;display:flex;flex-direction:column;gap:10px}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:500}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--white)}
+.card h2{font-size:28px;line-height:1.15;font-weight:700}
+.card p{color:#e8e4df}
+.btn{margin-top:12px;align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 28px;border-radius:999px;background:var(--white);color:var(--black);font-weight:700;font-size:17px;text-decoration:none}
+.btn::after{content:"";position:absolute;inset:0;border-radius:24px}
+.card:hover .btn{background:var(--crema)}
+.btn:focus-visible{outline:3px solid var(--cashew);outline-offset:3px}
+
+/* coming tools */
+.soon{padding:40px 0 56px}
+.soon h3{font-size:20px;font-weight:700;margin-bottom:16px}
+.list{display:grid;gap:12px;grid-template-columns:1fr}
+.item{border:1.5px solid var(--cashew);border-radius:24px;padding:20px 22px;color:var(--dark)}
+.item h4{font-size:19px;font-weight:700;line-height:1.25}
+.item p{font-size:16px;margin-top:4px}
+.item .when{margin-top:10px;font-size:15px;font-weight:500;color:var(--muted)}
+
+footer{margin-top:auto;border-top:1px solid var(--crema);padding:24px 0 32px;font-size:15px;color:var(--muted)}
+
+@media (min-width:720px){
+  .wrap{padding:0 40px}
+  .hero{padding:80px 0 84px}
+  .grid{grid-template-columns:1fr 1fr}
+  .card{padding:36px 32px;min-height:250px}
+  .list{grid-template-columns:repeat(3,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  .head{animation:none;transform:translateX(117px)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="lockup" href="./" aria-label="Good Cup tools home"><img src="assets/gc-lockup.png" alt="Good Cup" width="128" height="48"></a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Your Good Cup tools start here.</h1>
+    <p class="sub">Pick a tool and open it.</p>
+    <div class="strip">
+      <svg viewBox="0 0 300 30" role="img" aria-label="Two of five tools are ready">
+        <rect x="0" y="8" width="56" height="16" rx="5" fill="#000"/>
+        <rect x="61" y="8" width="56" height="16" rx="5" fill="#000"/>
+        <rect x="122.75" y="8.75" width="54.5" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
+        <rect x="183.75" y="8.75" width="54.5" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
+        <rect x="244.75" y="8.75" width="54.5" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
+        <g class="head">
+          <rect x="-1" y="0" width="2" height="30" fill="#1B1B1B"/>
+          <path d="M-5 0h10l-5 5z" fill="#1B1B1B"/>
+        </g>
+      </svg>
+      <p>2 of 5 ready</p>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="ready" aria-label="Ready to use">
+    <div class="wrap">
+      <div class="grid">
+        <article class="card">
+          <span class="live"><span class="dot"></span>Live</span>
+          <h2>NAS guide</h2>
+          <p>Start here: how to find and save files on the Good Cup NAS.</p>
+          <a class="btn" href="https://kirkvvisitacion-stack.github.io/goodcup-nas-guide/">Open NAS guide</a>
+        </article>
+        <article class="card">
+          <span class="live"><span class="dot"></span>Live</span>
+          <h2>Bag maker</h2>
+          <p>Turn a sticker PDF into the exact studio bag, right in the browser.</p>
+          <a class="btn" href="https://kirkvvisitacion-stack.github.io/goodcup-bagmaker/">Open bag maker</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="soon" aria-label="Coming soon">
+    <div class="wrap">
+      <h3>Coming soon</h3>
+      <div class="list">
+        <article class="item">
+          <h4>Post scheduling</h4>
+          <p>See and move the posts queued across our accounts.</p>
+          <p class="when">Ask Kirk for now</p>
+        </article>
+        <article class="item">
+          <h4>File search</h4>
+          <p>Find farm, product and brand files in one search.</p>
+          <p class="when">Works on Kirk's Mac for now</p>
+        </article>
+        <article class="item">
+          <h4>Cafe screen and sound</h4>
+          <p>Start the Slow Bar projector and music from your phone.</p>
+          <p class="when">Runs at the cafe for now</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Made by Kirk V for the Good Cup team</div>
+</footer>
+
+</body>
+</html>
