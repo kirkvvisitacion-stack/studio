@@ -34,7 +34,7 @@ h1{font-weight:700;font-size:clamp(40px,8vw,72px);line-height:1.04;max-width:12c
 .strip svg{display:block;width:100%;height:auto;overflow:visible}
 .strip p{margin-top:10px;font-size:16px;font-weight:500;color:var(--dark)}
 .head{animation:scrub 2.4s cubic-bezier(.45,0,.2,1) both}
-@keyframes scrub{from{transform:translateX(0)}to{transform:translateX(147.4px)}}
+@keyframes scrub{from{transform:translateX(0)}to{transform:translateX(169.3px)}}
 
 /* ready tools */
 .ready{padding:40px 0 8px}
@@ -47,13 +47,18 @@ h1{font-weight:700;font-size:clamp(40px,8vw,72px);line-height:1.04;max-width:12c
 .btn{margin-top:12px;align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 28px;border-radius:999px;background:var(--white);color:var(--black);font-weight:700;font-size:17px;text-decoration:none}
 .btn::after{content:"";position:absolute;inset:0;border-radius:24px}
 .card:hover .btn{background:var(--crema)}
+.row2{display:flex;flex-wrap:wrap;gap:12px;position:relative;z-index:1}
+.row2 .btn{margin-top:12px}
+.row2 .btn::after{display:none}
+.btn.alt{background:transparent;color:var(--white);box-shadow:inset 0 0 0 1.5px var(--white)}
+.card:hover .btn.alt{background:transparent}
 .btn:focus-visible{outline:3px solid var(--cashew);outline-offset:3px}
 
 /* coming tools */
 .soon{padding:40px 0 56px}
 .soon h3{font-size:20px;font-weight:700;margin-bottom:16px}
 .list{display:grid;gap:12px;grid-template-columns:1fr}
-.item{border:1.5px solid var(--cashew);border-radius:24px;padding:20px 22px;color:var(--dark)}
+.item{border-top:1.5px solid var(--cashew);padding:18px 4px 6px;color:var(--dark)}
 .item h4{font-size:19px;font-weight:700;line-height:1.25}
 .item p{font-size:16px;margin-top:4px}
 .item .when{margin-top:10px;font-size:15px;font-weight:500;color:var(--muted)}
@@ -68,7 +73,7 @@ footer{margin-top:auto;border-top:1px solid var(--crema);padding:24px 0 32px;fon
   .list{grid-template-columns:repeat(3,1fr)}
 }
 @media (prefers-reduced-motion:reduce){
-  .head{animation:none;transform:translateX(147.4px)}
+  .head{animation:none;transform:translateX(169.3px)}
 }
 </style>
 </head>
@@ -85,19 +90,20 @@ footer{margin-top:auto;border-top:1px solid var(--crema);padding:24px 0 32px;fon
     <h1>Your Good Cup tools start here.</h1>
     <p class="sub">Pick a tool and open it.</p>
     <div class="strip">
-      <svg viewBox="0 0 300 30" role="img" aria-label="Three of six tools are ready">
-        <rect x="0.0" y="8" width="45.8" height="16" rx="5" fill="#000"/>
-        <rect x="50.8" y="8" width="45.8" height="16" rx="5" fill="#000"/>
-        <rect x="101.6" y="8" width="45.8" height="16" rx="5" fill="#000"/>
-        <rect x="153.15" y="8.75" width="44.3" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
-        <rect x="203.95" y="8.75" width="44.3" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
-        <rect x="254.75" y="8.75" width="44.3" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
+      <svg viewBox="0 0 300 30" role="img" aria-label="Four of seven tools are ready">
+        <rect x="0.00" y="8" width="38.57" height="16" rx="5" fill="#000"/>
+        <rect x="43.57" y="8" width="38.57" height="16" rx="5" fill="#000"/>
+        <rect x="87.14" y="8" width="38.57" height="16" rx="5" fill="#000"/>
+        <rect x="130.71" y="8" width="38.57" height="16" rx="5" fill="#000"/>
+        <rect x="175.04" y="8.75" width="37.07" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
+        <rect x="218.61" y="8.75" width="37.07" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
+        <rect x="262.18" y="8.75" width="37.07" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
         <g class="head">
           <rect x="-1" y="0" width="2" height="30" fill="#1B1B1B"/>
           <path d="M-5 0h10l-5 5z" fill="#1B1B1B"/>
         </g>
       </svg>
-      <p>3 of 6 ready</p>
+      <p>4 of 7 ready</p>
     </div>
   </div>
 </section>
@@ -123,6 +129,15 @@ footer{margin-top:auto;border-top:1px solid var(--crema);padding:24px 0 32px;fon
           <h2>Post maker</h2>
           <p>Put words on your photos for an IG carousel and Story, in the Good Cup fonts.</p>
           <a class="btn" href="https://kirkvvisitacion-stack.github.io/goodcup-post-maker/">Open post maker</a>
+        </article>
+        <article class="card">
+          <span class="live"><span class="dot"></span>Live</span>
+          <h2>3D Cafe</h2>
+          <p>Walk the Manila cafe in 3D, then take the model files for your own work. The 3D view opens with your Good Cup account.</p>
+          <div class="row2">
+            <a class="btn" href="https://claude.ai/artifact/57PcJPdagh67pPBKH7HX2L">Open the 3D cafe</a>
+            <a class="btn alt" href="https://ug.link/goodcup/filemgr/share-download/?id=5bec6ab99acb40f99cdbc5a2ad78ec5a">Get the handoff files</a>
+          </div>
         </article>
       </div>
     </div>
