@@ -34,7 +34,7 @@ h1{font-weight:700;font-size:clamp(40px,8vw,72px);line-height:1.04;max-width:12c
 .strip svg{display:block;width:100%;height:auto;overflow:visible}
 .strip p{margin-top:10px;font-size:16px;font-weight:500;color:var(--dark)}
 .head{animation:scrub 2.4s cubic-bezier(.45,0,.2,1) both}
-@keyframes scrub{from{transform:translateX(0)}to{transform:translateX(212.9px)}}
+@keyframes scrub{from{transform:translateX(0)}to{transform:translateX(223.8px)}}
 
 /* ready tools */
 .ready{padding:40px 0 8px}
@@ -52,6 +52,27 @@ h1{font-weight:700;font-size:clamp(40px,8vw,72px);line-height:1.04;max-width:12c
 .row2 .btn::after{display:none}
 .btn.alt{background:transparent;color:var(--white);box-shadow:inset 0 0 0 1.5px var(--white)}
 .card:hover .btn.alt{background:transparent}
+
+/* card themes, each tied to what the tool does */
+.card{color:var(--black);background:var(--white);border:1.5px solid var(--cashew);min-height:0}
+.card h2{color:inherit}.card p{color:var(--dark)}
+.card .ico svg{width:44px;height:44px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.card .live{color:inherit}.card .dot{background:currentColor}
+.card .btn{background:var(--black);color:var(--white);box-shadow:none}
+.card .btn.alt{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.card:hover .btn{background:var(--black)}.card:hover .btn.alt{background:transparent}
+.t-crema{background:var(--crema);border-color:var(--crema)}
+.t-cashew{background:var(--cashew);border-color:var(--cashew)}
+.t-kraft{background:#E3D5C2;border-color:#E3D5C2}
+.t-white{background:var(--white)}
+.t-black{background:var(--black);color:var(--white);border-color:var(--black)}
+.t-black p{color:#e8e4df}
+.t-black .btn{background:var(--white);color:var(--black)}
+.t-black:hover .btn{background:var(--crema)}
+.t-ds .ico svg circle:nth-child(1){fill:#EDE9E4}.t-ds .ico svg circle:nth-child(2){fill:#D1C8C1}.t-ds .ico svg circle:nth-child(3){fill:#000;stroke:#000}
+.t-ds p b{font-weight:700}
+.row2{display:flex;flex-wrap:wrap;gap:10px}
+.row2 .btn{margin-top:8px}
 .btn:focus-visible{outline:3px solid var(--cashew);outline-offset:3px}
 
 /* coming tools */
@@ -73,7 +94,7 @@ footer{margin-top:auto;border-top:1px solid var(--crema);padding:24px 0 32px;fon
   .list{grid-template-columns:repeat(3,1fr)}
 }
 @media (prefers-reduced-motion:reduce){
-  .head{animation:none;transform:translateX(212.9px)}
+  .head{animation:none;transform:translateX(223.8px)}
 }
 </style>
 </head>
@@ -90,20 +111,21 @@ footer{margin-top:auto;border-top:1px solid var(--crema);padding:24px 0 32px;fon
     <h1>Your Good Cup tools start here.</h1>
     <p class="sub">Pick a tool and open it.</p>
     <div class="strip">
-      <svg viewBox="0 0 300 30" role="img" aria-label="Five of seven tools are ready">
-        <rect x="0.00" y="8" width="38.57" height="16" rx="5" fill="#000"/>
-        <rect x="43.57" y="8" width="38.57" height="16" rx="5" fill="#000"/>
-        <rect x="87.14" y="8" width="38.57" height="16" rx="5" fill="#000"/>
-        <rect x="130.71" y="8" width="38.57" height="16" rx="5" fill="#000"/>
-        <rect x="174.29" y="8" width="38.57" height="16" rx="5" fill="#000"/>
-        <rect x="218.61" y="8.75" width="37.07" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
-        <rect x="262.18" y="8.75" width="37.07" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
+      <svg viewBox="0 0 300 30" role="img" aria-label="Six of eight tools are ready">
+        <rect x="0.00" y="8" width="33.12" height="16" rx="5" fill="#000"/>
+        <rect x="38.12" y="8" width="33.12" height="16" rx="5" fill="#000"/>
+        <rect x="76.25" y="8" width="33.12" height="16" rx="5" fill="#000"/>
+        <rect x="114.38" y="8" width="33.12" height="16" rx="5" fill="#000"/>
+        <rect x="152.50" y="8" width="33.12" height="16" rx="5" fill="#000"/>
+        <rect x="190.62" y="8" width="33.12" height="16" rx="5" fill="#000"/>
+        <rect x="229.50" y="8.75" width="31.62" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
+        <rect x="267.62" y="8.75" width="31.62" height="14.5" rx="5" fill="none" stroke="#D1C8C1" stroke-width="1.5"/>
         <g class="head">
           <rect x="-1" y="0" width="2" height="30" fill="#1B1B1B"/>
           <path d="M-5 0h10l-5 5z" fill="#1B1B1B"/>
         </g>
       </svg>
-      <p>5 of 7 ready</p>
+      <p>6 of 8 ready</p>
     </div>
   </div>
 </section>
@@ -112,44 +134,47 @@ footer{margin-top:auto;border-top:1px solid var(--crema);padding:24px 0 32px;fon
   <section class="ready" aria-label="Ready to use">
     <div class="wrap">
       <div class="grid">
-        <article class="card">
+        <article class="card t-crema">
+          <div class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="10" width="32" height="12" rx="3"/><rect x="8" y="26" width="32" height="12" rx="3"/><circle cx="14" cy="16" r="1.6"/><circle cx="14" cy="32" r="1.6"/><path d="M26 16h8M26 32h8"/></svg></div>
           <span class="live"><span class="dot"></span>Live</span>
           <h2>NAS guide</h2>
-          <p>Start here: how to find and save files on the Good Cup NAS.</p>
-          <a class="btn" href="https://kirkvvisitacion-stack.github.io/goodcup-nas-guide/">Open NAS guide</a>
+          <p>Start here. Join the Good Cup NAS in four steps.</p>
+          <div class="row2"><a class="btn" href="https://kirkvvisitacion-stack.github.io/goodcup-nas-guide/">Open NAS guide</a></div>
         </article>
-        <article class="card">
+        <article class="card t-white">
+          <div class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="21" cy="21" r="11"/><path d="M29.5 29.5L40 40"/><path d="M16 21h10"/></svg></div>
           <span class="live"><span class="dot"></span>Live</span>
-          <h2>Bag maker</h2>
+          <h2>NAS file search</h2>
+          <p>Type a word, find any file on the NAS, copy where it lives. Opens with your Good Cup account.</p>
+          <div class="row2"><a class="btn" href="https://claude.ai/artifact/KAkpitAmNrKVxAUEHrXskJ">Search the NAS</a><a class="btn alt" href="handoff/nas-search.html">Connect your Claude</a></div>
+        </article>
+        <article class="card t-cashew">
+          <div class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="6" width="28" height="36" rx="4"/><path d="M16 30h16M16 36h10"/><circle cx="19" cy="17" r="3"/><path d="M38 24l-7-6-9 10"/></svg></div>
+          <span class="live"><span class="dot"></span>Live</span>
+          <h2>Create a post</h2>
+          <p>Put words on your photos for an Instagram carousel and Story.</p>
+          <div class="row2"><a class="btn" href="https://kirkvvisitacion-stack.github.io/goodcup-post-maker/">Create a post</a><a class="btn alt" href="guides/post-maker.html">How to use it</a></div>
+        </article>
+        <article class="card t-white t-ds">
+          <div class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="19" r="9"/><circle cx="31" cy="19" r="9"/><circle cx="24" cy="31" r="9"/></svg></div>
+          <span class="live"><span class="dot"></span>Live</span>
+          <h2>Good Cup design system</h2>
+          <p>Add our look to your own Claude, then make anything on brand. One command: /goodcup-designsystem-by-kirk</p>
+          <div class="row2"><a class="btn" href="handoff/design-system.html">Add it to your Claude</a></div>
+        </article>
+        <article class="card t-kraft">
+          <div class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 14h22l3 26H10z"/><path d="M13 14c0-4 4-7 11-7s11 3 11 7"/><rect x="18" y="22" width="12" height="10" rx="2"/></svg></div>
+          <span class="live"><span class="dot"></span>Live</span>
+          <h2>Coffee Bag Maker</h2>
           <p>Turn a sticker PDF into the exact studio bag, right in the browser.</p>
-          <div class="row2">
-            <a class="btn" href="https://kirkvvisitacion-stack.github.io/goodcup-bagmaker/">Open bag maker</a>
-            <a class="btn alt" href="guides/bag-maker.html">How to use it</a>
-          </div>
+          <div class="row2"><a class="btn" href="https://kirkvvisitacion-stack.github.io/goodcup-bagmaker/">Open Coffee Bag Maker</a><a class="btn alt" href="guides/bag-maker.html">How to use it</a><a class="btn alt" href="handoff/coffee-bag-maker.html">Handoff</a></div>
         </article>
-        <article class="card">
+        <article class="card t-black">
+          <div class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6l16 9v18L24 42 8 33V15z"/><path d="M8 15l16 9 16-9M24 24v18"/></svg></div>
           <span class="live"><span class="dot"></span>Live</span>
-          <h2>Post maker</h2>
-          <p>Put words on your photos for an IG carousel and Story, in the Good Cup fonts.</p>
-          <div class="row2">
-            <a class="btn" href="https://kirkvvisitacion-stack.github.io/goodcup-post-maker/">Open post maker</a>
-            <a class="btn alt" href="guides/post-maker.html">How to use it</a>
-          </div>
-        </article>
-        <article class="card">
-          <span class="live"><span class="dot"></span>Live</span>
-          <h2>3D Cafe</h2>
-          <p>Walk the Manila cafe in 3D, then take the model files for your own work. The 3D view opens with your Good Cup account.</p>
-          <div class="row2">
-            <a class="btn" href="https://claude.ai/artifact/57PcJPdagh67pPBKH7HX2L">Open the 3D cafe</a>
-            <a class="btn alt" href="https://ug.link/goodcup/filemgr/share-download/?id=5bec6ab99acb40f99cdbc5a2ad78ec5a">Get the handoff files</a>
-          </div>
-        </article>
-        <article class="card">
-          <span class="live"><span class="dot"></span>Live</span>
-          <h2>File search</h2>
-          <p>Find farm, product and brand files by typing a word, then copy the folder path. Opens with your Good Cup account.</p>
-          <a class="btn" href="https://claude.ai/artifact/KAkpitAmNrKVxAUEHrXskJ">Open file search</a>
+          <h2>3D of the Cafe</h2>
+          <p>Walk the Manila cafe in 3D. Opens with your Good Cup account.</p>
+          <div class="row2"><a class="btn" href="https://claude.ai/artifact/57PcJPdagh67pPBKH7HX2L">Open 3D of the Cafe</a><a class="btn alt" href="handoff/3d-cafe.html">Handoff files</a></div>
         </article>
       </div>
     </div>

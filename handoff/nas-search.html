@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Search the NAS from your Claude</title>
+<link rel="icon" href="../assets/gc-lockup.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--black:#000;--dark:#1B1B1B;--white:#fff;--crema:#EDE9E4;--cashew:#D1C8C1;--muted:#5f5852;--bdeep:#A9641F;--sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--white);color:var(--black);font-family:var(--sans);font-size:17px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column}
+.wrap{width:100%;max-width:1000px;margin:0 auto;padding:0 20px}
+header{padding:16px 0}header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lockup{display:inline-flex;align-items:center;min-height:44px}.lockup img{display:block;height:48px;width:auto}
+.back{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;color:var(--dark);font-weight:500;text-decoration:none;font-size:16px}
+.back:hover{text-decoration:underline}
+.hero{background:var(--crema);padding:40px 0 44px}
+h1{font-weight:700;font-size:clamp(36px,7.4vw,64px);line-height:1.05;max-width:16ch}
+.sub{margin-top:14px;font-size:19px;color:var(--dark);max-width:38ch}
+.go{margin-top:28px;background:var(--black);color:var(--white);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:12px;max-width:560px}
+.go p{color:#e8e4df;font-size:16px}
+.row2{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;background:var(--white);color:var(--black);font:700 17px var(--sans);text-decoration:none;border:0;cursor:pointer;text-align:center}
+.btn:hover{background:var(--crema)}
+.btn.dark{background:var(--black);color:var(--white)}.btn.dark:hover{background:var(--dark)}
+.btn.alt{background:transparent;color:var(--white);box-shadow:inset 0 0 0 1.5px var(--white)}.btn.alt:hover{background:#1B1B1B}
+.btn:focus-visible,.back:focus-visible,summary:focus-visible,a.lnk:focus-visible{outline:3px solid var(--cashew);outline-offset:3px}
+.btn.big{width:100%}
+section.blk{padding:40px 0 0}
+h2{font-size:28px;line-height:1.15;font-weight:700;margin-bottom:16px}
+.promptbox{background:var(--black);color:var(--white);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.promptbox h2{margin:0;font-size:24px;color:var(--white)}
+.promptbox .hint{color:#e8e4df;font-size:16px}
+pre.pr{font:400 15px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#1B1B1B;color:#f4f1ed;border-radius:14px;padding:16px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-height:340px;overflow:auto;-webkit-overflow-scrolling:touch}
+.promptbox.light{background:var(--crema);color:var(--black)}
+.promptbox.light h2{color:var(--black)}.promptbox.light .hint{color:var(--dark)}
+.promptbox.light pre.pr{background:var(--white);color:var(--dark);box-shadow:inset 0 0 0 1.5px var(--cashew)}
+.promptbox.light .btn{background:var(--black);color:var(--white)}.promptbox.light .btn:hover{background:var(--dark)}
+.steps{list-style:none;display:grid;gap:14px;grid-template-columns:1fr}
+.steps li{display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:start;border:1.5px solid var(--cashew);border-radius:24px;padding:20px}
+.ico{width:56px;height:56px;border-radius:50%;background:var(--black);color:var(--white);display:grid;place-items:center}
+.ico .ic{width:28px;height:28px}
+.num{font-weight:700;font-size:15px;color:var(--bdeep)}
+.steps h3{font-size:21px;line-height:1.2;font-weight:700;margin:2px 0 6px}
+.steps p{color:var(--dark);font-size:17px}
+.steps .row2{margin-top:12px}
+.steps .btn{min-height:48px;padding:0 22px;font-size:16px}
+.steps .btn.dark{background:var(--black);color:var(--white)}
+a.lnk{color:var(--black);font-weight:700;text-underline-offset:3px;overflow-wrap:anywhere}
+.flow{display:grid;gap:10px;grid-template-columns:1fr;margin:0 0 4px}
+.flow div{background:var(--crema);border-radius:18px;padding:14px 16px;display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:center;font-weight:500}
+.flow svg{width:30px;height:30px;color:var(--bdeep)}
+.two{display:grid;gap:14px;grid-template-columns:1fr}
+.panel{background:var(--crema);border-radius:24px;padding:24px}
+.panel h2{font-size:22px;margin-bottom:10px}
+.panel ul{list-style:none;display:grid;gap:10px}
+.panel li{display:grid;grid-template-columns:22px 1fr;gap:10px}
+.panel li svg{width:22px;height:22px;margin-top:2px;color:var(--bdeep)}
+.check{margin-top:40px;border:1.5px solid var(--cashew);border-radius:24px;padding:24px;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.check svg{width:44px;height:44px;color:var(--bdeep)}
+.check h2{margin:0 0 6px;font-size:22px}
+.check p{color:var(--dark)}
+details{border-top:1.5px solid var(--cashew)}details:last-child{border-bottom:1.5px solid var(--cashew)}
+summary{list-style:none;cursor:pointer;min-height:56px;padding:14px 4px;font-weight:700;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:26px;font-weight:500;color:var(--bdeep)}
+details[open] summary::after{content:"\2212"}
+details p{padding:0 4px 18px;color:var(--dark)}
+.help{margin-top:40px;background:var(--black);color:var(--white);border-radius:24px;padding:28px 24px;display:flex;flex-direction:column;gap:10px}
+.help h2{margin:0;font-size:24px}.help p{color:#e8e4df}
+footer{margin-top:56px;border-top:1px solid var(--crema);padding:24px 0 32px;font-size:15px;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--black);color:var(--white);padding:12px 20px;border-radius:14px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;text-align:center}
+.toast.on{opacity:1}
+@media (min-width:720px){.wrap{padding:0 40px}.hero{padding:64px 0 68px}.two{grid-template-columns:1fr 1fr}.go{padding:28px}.btn.big{width:auto}.promptbox{padding:28px}.flow{grid-template-columns:repeat(3,1fr)}.flow div{grid-template-columns:1fr;justify-items:start}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toast{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="lockup" href="../" aria-label="Good Cup tools home"><img src="../assets/gc-lockup.png" alt="Good Cup" width="128" height="48"></a>
+<a class="back" href="../">All tools</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+<h1>Search the NAS from your Claude</h1>
+<p class="sub">Ask in plain words. Get the exact folder to open in the UGREEN app.</p>
+<div class="go">
+<a class="btn big" href="#prompt-a">Copy the prompt</a>
+<p>About 5 minutes. You paste one prompt into your own Claude, and it does the work.</p>
+</div>
+</div></section>
+
+<main><div class="wrap">
+
+<section class="blk" aria-labelledby="why"><h2 id="why">Why this exists</h2>
+<p>Everyone on the team needs to find footage and photos fast, and nobody should have to scroll through folders or ask Kirk. Your Claude can search a list of every file on the NAS, then tell you where it is.</p>
+<div class="flow" style="margin-top:16px" aria-label="How it works">
+<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 14h6M9 17h4"/></svg><span>A list of file names, folders and tags</span></div>
+<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span>Your Claude searches the list</span></div>
+<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>You open the folder in the UGREEN app</span></div>
+</div>
+</section>
+
+<section class="blk" aria-labelledby="honest"><div class="panel">
+<h2 id="honest">Plain truth about how it connects</h2>
+<p>The NAS itself is not connected to Claude. From outside the office it only opens through the UGREEN app or a browser login, so your Claude cannot see inside it, and that is the safe way: Claude never touches the real files. It only reads a copy of the file list (names, folders and tags, no photos or videos). It tells you the path, and you open the file yourself.</p>
+</div></section>
+
+<section class="blk" id="prompt-a" aria-labelledby="ph"><div class="promptbox">
+<h2 id="ph">Copy this prompt</h2>
+<p class="hint">Paste it into Claude (claude.ai, Cowork or Claude Code), then attach file-index.json. Step 2 below shows where to get that file.</p>
+<pre class="pr" id="promptA" tabindex="0">You are my Good Cup file finder. I attached file-index.json. It is a list of every file on the Good Cup NAS: names, folders, tags and notes only. It does not contain the files themselves.
+
+How to work:
+1. Treat file-index.json as your ONLY source of truth. Do not use the web, your memory or guesses about what we own. Never say a file exists unless it is a row in the index.
+2. Before my first search, read the first rows and any key list inside the file, work out what each field means (its fields are name, path, type, farm, project, tags, people, place, yearMonth, description and score), and tell me in one line what you found. If folders are stored in a separate table, look up the real folder path from it.
+3. When I ask for something in plain words, turn it into filters: type (photo, video, document, audio), farm, project, tags, place, year and usability (for example ready to use). Say which filters you used.
+4. Show the 5 best matches. For each one give: the file name, the full folder path as it appears in the index, and one short line on why it matches (farm, project, tags, usability). Rank the most usable and most specific ones first.
+5. If nothing matches, say "No match in the index" and suggest two other words or filters I could try. Never fill the list with weak guesses.
+6. At the end of every answer, add one line with the date of the index (the file or the status note inside it shows it), and remind me that newer files may be missing. If the index looks older than a month, tell me to ask for a fresh one.
+7. After the matches, tell me how to open the top result in the UGREEN NAS app: open the app, go to Files, open the GOOD CUP folder, then follow the folder path one folder at a time, then find the file name.
+8. Never download, copy or move files in bulk, and never ask me to. The NAS is slow over the internet, so I will open or stream one file at a time, or queue what I need.
+9. Keep answers short, in plain words, with no technical jargon.
+
+Start by confirming you read the file, then ask me what I am looking for.</pre>
+<div class="row2"><button class="btn" type="button" data-copy="promptA">Copy the prompt</button></div>
+</div></section>
+
+<section class="blk" aria-labelledby="how"><h2 id="how">3 steps</h2>
+<ol class="steps">
+<li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M16 7l3 3M14 9l2 2"/></svg></span><div><span class="num">Step 1</span><h3>Get your NAS login</h3><p>You need it to open files at the end. Follow the NAS guide, then ask Kirk to approve your account.</p><div class="row2"><a class="btn dark" href="../../goodcup-nas-guide/">Open the NAS guide</a></div></div></li>
+<li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M8 11l4 4 4-4"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg></span><div><span class="num">Step 2</span><h3>Download the file list</h3><p>Open the private File search page and sign in with your Good Cup account. Press <strong>Download the index for Claude</strong>. Your browser saves a file called <strong>file-index.json</strong>.</p><div class="row2"><a class="btn dark" href="https://claude.ai/artifact/KAkpitAmNrKVxAUEHrXskJ" target="_blank" rel="noopener">Open File search</a></div></div></li>
+<li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 11-8.6 8.6a5 5 0 0 1-7-7L14 4a3.4 3.4 0 0 1 4.8 4.8l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6L15 7"/></svg></span><div><span class="num">Step 3</span><h3>Paste the prompt and attach the file</h3><p>Open a new chat in your Claude. Paste the prompt from the black box above, attach file-index.json, and send. Then ask for what you need, like "farm clips of Bukidnon harvest, ready to use".</p><div class="row2"><button class="btn dark" type="button" data-copy="promptA">Copy the prompt</button></div></div></li>
+</ol></section>
+
+<section class="blk" aria-labelledby="open"><h2 id="open">Then open the file</h2>
+<ol class="steps">
+<li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><div><span class="num">In the UGREEN app</span><h3>Files, GOOD CUP, follow the path</h3><p>Claude gives you a folder path. In the UGREEN NAS app, tap Files, open GOOD CUP, then open each folder in the path in order. Find the file name inside. Open or stream one file at a time.</p></div></li>
+</ol></section>
+
+<section class="check" aria-labelledby="ck">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 3 3 5-6"/></svg>
+<div><h2 id="ck">Check it worked</h2><p>Claude says it read file-index.json and tells you what the fields mean. Ask for something you know exists, like a farm you filmed. You should get 5 matches with folder paths, and the index date at the bottom.</p></div>
+</section>
+
+<section class="blk" aria-labelledby="cc"><div class="promptbox light">
+<h2 id="cc">Using Claude Code on your Mac?</h2>
+<p class="hint">Paste this one instead. It saves the index in a folder on your Mac and builds a small search tool, so you can search again any time without attaching the file. Download the index from step 2 first, and keep it in your Downloads folder.</p>
+<pre class="pr" id="promptB" tabindex="0">Set up a local Good Cup file finder for me. I downloaded file-index.json (the Good Cup NAS file list: names, folders and tags only) from the File search page and it is in my Downloads folder.
+
+1. Create the folder ~/GoodCupFileIndex/ and move file-index.json into it. If a newer file-index.json is in Downloads later, replace the old one and keep the old as file-index-old.json.
+2. Open the file, read the first rows and any key list, and work out what each field means (its fields are name, path, type, farm, project, tags, people, place, yearMonth, description and score). If folders are in a separate table, resolve them to real folder paths.
+3. In ~/GoodCupFileIndex/ write a small Python 3 script called search.py that uses only the standard library. It takes plain words plus optional filters (--type photo|video|doc|audio, --farm, --project, --tag, --year, --usable) and prints the 5 best matches: file name, full folder path, and a short reason. It ranks matches that fit more words higher. If nothing matches it prints "No match in the index" and never guesses.
+4. Run one test search for a farm name I give you and show me the output.
+5. Every result ends with the index date and a note that newer files may be missing. Print how to open the top result: UGREEN NAS app, Files, open GOOD CUP, follow the folder path, find the file.
+6. Rules: the index is the only data source. Never claim a file exists that is not in the index. Never mount, download, copy or move files from the NAS. It is slow over the internet, so I open one file at a time or queue it. Never write outside ~/GoodCupFileIndex/.
+
+When it works, tell me the one command to run a search, for example: python3 ~/GoodCupFileIndex/search.py "bukidnon harvest" --type video</pre>
+<div class="row2"><button class="btn" type="button" data-copy="promptB">Copy the Claude Code prompt</button></div>
+</div></section>
+
+<section class="blk" aria-labelledby="wr"><h2 id="wr">If something looks wrong</h2><div>
+<details><summary>I cannot open the File search page</summary><p>It needs a Good Cup Claude account. Sign in with your work email. If it still says no access, message Kirk.</p></details>
+<details><summary>I cannot find the Download button</summary><p>Look for Download the index for Claude near the top of the File search page. If it is not there yet, tell Kirk, because the page may still be getting updated.</p></details>
+<details><summary>Claude cannot read the file</summary><p>Try a new chat and attach the file again. If the file is very large, attach it in Claude on the web or use the Claude Code version.</p></details>
+<details><summary>The file Claude found is not in the app</summary><p>The list is a copy from a past date, so newer or moved files may be missing. Tell Kirk the file name and he can refresh the list.</p></details>
+<details><summary>I need a whole folder of footage</summary><p>Do not copy it all at once. The NAS is slow over the internet. Open or stream the clips you need, or ask Kirk to queue the copy.</p></details>
+</div></section>
+
+<section class="help"><h2>Still stuck?</h2><p>Message @kirkvee on Telegram. Say which step you are on and what you see.</p></section>
+
+</div></main>
+<footer><div class="wrap">Your Claude reads a copy of the file list, never the NAS itself. Made by Kirk V for the Good Cup team.</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+<script>
+(function(){
+var t=document.getElementById("toast"),tm;
+function say(m){t.textContent=m;t.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){t.classList.remove("on")},2000)}
+function fallback(el){try{var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);var ok=document.execCommand("copy");say(ok?"Copied":"Selected. Press copy on your keyboard")}catch(e){say("Press and hold the text to copy")}}
+Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"),function(b){
+b.addEventListener("click",function(){var el=document.getElementById(b.getAttribute("data-copy"));var s=el.textContent;
+if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(s).then(function(){say("Copied")},function(){fallback(el)})}else fallback(el)})});
+})();
+</script>
+</body>
+</html>

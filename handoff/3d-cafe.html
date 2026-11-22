@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Use the 3D of the Cafe in your Claude</title>
+<link rel="icon" href="../assets/gc-lockup.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--black:#000;--dark:#1B1B1B;--white:#fff;--crema:#EDE9E4;--cashew:#D1C8C1;--muted:#5f5852;--bdeep:#A9641F;--sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--white);color:var(--black);font-family:var(--sans);font-size:17px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column}
+.wrap{width:100%;max-width:1000px;margin:0 auto;padding:0 20px}
+header{padding:16px 0}header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lockup{display:inline-flex;align-items:center;min-height:44px}.lockup img{display:block;height:48px;width:auto}
+.back{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;color:var(--dark);font-weight:500;text-decoration:none;font-size:16px}
+.back:hover{text-decoration:underline}
+.hero{background:var(--crema);padding:40px 0 44px}
+h1{font-weight:700;font-size:clamp(38px,8vw,68px);line-height:1.05;max-width:14ch}
+.sub{margin-top:14px;font-size:19px;color:var(--dark);max-width:34ch}
+.go{margin-top:28px;background:var(--black);color:var(--white);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:12px;max-width:560px}
+.go p{color:#e8e4df;font-size:16px}
+.row2{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;background:var(--white);color:var(--black);font:700 17px var(--sans);text-decoration:none;border:0;cursor:pointer}
+.btn:hover{background:var(--crema)}
+.btn.alt{background:transparent;color:var(--white);box-shadow:inset 0 0 0 1.5px var(--white)}
+.btn.alt:hover{background:#1B1B1B}
+.btn.dark{background:var(--black);color:var(--white)}.btn.dark:hover{background:var(--dark)}
+.btn:focus-visible,.back:focus-visible{outline:3px solid var(--cashew);outline-offset:3px}
+.btn.big{width:100%}
+section.blk{padding:40px 0 0}
+h2{font-size:28px;line-height:1.15;font-weight:700;margin-bottom:16px}
+.steps{list-style:none;display:grid;gap:14px;grid-template-columns:1fr}
+.steps li{display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:start;border:1.5px solid var(--cashew);border-radius:24px;padding:20px}
+.ico{position:relative;width:56px;height:56px;border-radius:50%;background:var(--black);color:var(--white);display:grid;place-items:center}
+.ico .ic{width:28px;height:28px}
+.num{font-weight:700;font-size:15px;color:var(--bdeep)}
+.steps h3{font-size:21px;line-height:1.2;font-weight:700;margin:2px 0 6px}
+.steps p{color:var(--dark);font-size:17px}
+.two{display:grid;gap:14px;grid-template-columns:1fr}
+.panel{background:var(--crema);border-radius:24px;padding:24px}
+.panel h2{font-size:22px;margin-bottom:10px}
+.panel ul{list-style:none;display:grid;gap:10px}
+.panel li{display:grid;grid-template-columns:22px 1fr;gap:10px}
+.panel li svg{width:22px;height:22px;margin-top:2px;color:var(--bdeep)}
+.path{background:var(--black);color:var(--white);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.path h2{margin:0;font-size:22px}
+.path code{font:500 17px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;background:#1B1B1B;border-radius:14px;padding:14px 16px;word-break:break-word;display:block}
+.path p{color:#e8e4df;font-size:16px}
+.wrong{display:grid;gap:0}
+details{border-top:1.5px solid var(--cashew)}details:last-child{border-bottom:1.5px solid var(--cashew)}
+summary{list-style:none;cursor:pointer;min-height:56px;padding:14px 4px;font-weight:700;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:26px;font-weight:500;color:var(--bdeep)}
+details[open] summary::after{content:"\2212"}
+details p{padding:0 4px 18px;color:var(--dark)}
+summary:focus-visible{outline:3px solid var(--cashew);outline-offset:2px}
+.help{margin-top:40px;background:var(--black);color:var(--white);border-radius:24px;padding:28px 24px;display:flex;flex-direction:column;gap:10px}
+.help h2{margin:0;font-size:24px}.help p{color:#e8e4df}
+.pack{margin-top:14px;border:1.5px solid var(--cashew);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.pack h2{margin:0;font-size:22px}.pack p{color:var(--dark)}
+footer{margin-top:56px;border-top:1px solid var(--crema);padding:24px 0 32px;font-size:15px;color:var(--muted)}
+.toast{max-width:calc(100vw - 32px);text-align:center;position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--black);color:var(--white);padding:12px 20px;border-radius:14px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+@media (min-width:720px){.wrap{padding:0 40px}.hero{padding:64px 0 68px}.two{grid-template-columns:1fr 1fr}.go{padding:28px}.btn.big{width:auto}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toast{max-width:calc(100vw - 32px);text-align:center;transition:none}}
+
+.why{margin-top:14px;font-size:19px;color:var(--dark);max-width:60ch}
+.map{display:grid;gap:12px;grid-template-columns:1fr}
+.card{background:var(--crema);border-radius:24px;padding:20px;display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start}
+.card .ico{width:48px;height:48px}.card .ico .ic{width:24px;height:24px}
+.card h3{font-size:19px;line-height:1.2;margin:2px 0 6px}.card p{font-size:16px;color:var(--dark)}
+.tag{display:inline-block;margin-top:8px;font-size:14px;font-weight:700;background:var(--white);border-radius:10px;padding:4px 12px;color:var(--dark)}
+.files{list-style:none;margin-top:8px;display:grid;gap:6px}
+.files li{font-size:16px;color:var(--dark);display:block}
+.files b{font-weight:700;color:var(--black)}
+.promptbox{background:var(--black);color:var(--white);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.promptbox h2{margin:0;font-size:24px}.promptbox>p{color:#e8e4df;font-size:16px}
+.promptbox pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;font:500 15.5px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#1B1B1B;border-radius:14px;padding:16px;max-height:340px;overflow:auto}
+.check{margin-top:14px;background:var(--crema);border-radius:24px;padding:20px 24px;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+.check svg{width:28px;height:28px;color:var(--bdeep)}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.note{font-size:15px;margin-top:10px;color:var(--muted)}
+@media (min-width:720px){.map{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="lockup" href="../" aria-label="Good Cup tools home"><img src="../assets/gc-lockup.png" alt="Good Cup" width="128" height="48"></a>
+<a class="back" href="../">All tools</a>
+</div></header>
+<section class="hero"><div class="wrap">
+<h1>Use the 3D of the cafe in your Claude</h1>
+<p class="why">This is for teammates who want to use the 3D of the Manila cafe (the whole cafe, the Slow Bar and the floor plan) inside their own Claude work. You can place a drink or a sign in the cafe, plan a layout, or make visuals. You do not need Blender or Tailscale. You paste one prompt and your Claude does the work.</p>
+<div class="go">
+<a class="btn big" href="#prompt">Jump to the prompt</a>
+<p>About 10 minutes, plus the download. Five steps below.</p>
+</div>
+</div></section>
+<main><div class="wrap">
+<section class="blk" aria-labelledby="map"><h2 id="map">What is in the handoff</h2><div class="map"><div class="card"><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><div><h3>Open the 3D Cafe</h3><p>Look around the whole cafe in your browser, no files needed. Needs a Good Cup account. The same viewer also runs offline from the handoff folder.</p><span class="tag">Best to just look</span></div></div><div class="card"><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg></span><div><h3>3D Model Files: Whole Cafe</h3><p>The same cafe in three formats. <ul class="files"><li><b>.glb</b> for Claude and the web. Use this one.</li><li><b>.usdz</b> to view on iPhone, iPad or Mac, with AR on iPhone.</li><li><b>.blend</b> only if you own Blender.</li></ul></p><span class="tag">Use the GLB</span></div></div><div class="card"><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h18M5 10v9M19 10v9M7 10V6h10v4"/></svg></span><div><h3>3D Model Files: Slow Bar.glb</h3><p>The Slow Bar room on its own. Smaller and quicker to load when your work is only about the bar.</p><span class="tag">For bar work</span></div></div><div class="card"><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h18v18H3z"/><path d="M3 12h8v9M11 12V3M15 12h6"/></svg></span><div><h3>3D Model Files: Cafe Floor Plan.glb</h3><p>Plain walls, doors and counters at real size. Good for measuring and planning a layout.</p><span class="tag">For layouts</span></div></div><div class="card"><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></span><div><h3>Pictures and Videos</h3><p>Top views, an open top angle, and reels of the cafe and the Slow Bar, ready to post.</p><span class="tag">For posting</span></div></div></div></section>
+<section class="blk" aria-labelledby="links"><h2 id="links">Two links</h2>
+<div class="links"><a class="btn dark" href="https://claude.ai/artifact/57PcJPdagh67pPBKH7HX2L" target="_blank" rel="noopener">Open the live 3D view</a><a class="btn dark" href="https://ug.link/goodcup/filemgr/share-download/?id=5bec6ab99acb40f99cdbc5a2ad78ec5a" target="_blank" rel="noopener">Get the handoff files</a></div>
+<p class="note">The live 3D view needs a Good Cup Claude account. The files are about 512 MB in total, so download them on the office network.</p></section>
+<section class="blk" aria-labelledby="how"><h2 id="how">How to do it</h2><ol class="steps"><li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M8 11l4 4 4-4"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg></span><div><span class="num">Step 1</span><h3>Get the files</h3><p>Press Get the handoff files below. It opens the Good Cup NAS share. The whole package is about 512 MB, so download it on the office network, not on mobile data. The 3D Model Files folder alone is about 210 MB if you only need the models.</p></div></li><li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><div><span class="num">Step 2</span><h3>Keep them on your computer</h3><p>Unzip the download and put the folder somewhere easy, like Documents. Do not open the files from the share each time. Copy them to your computer first.</p></div></li><li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7L4 20l1.1-4.4A8 8 0 1 1 21 12z"/></svg></span><div><span class="num">Step 3</span><h3>Open your own Claude</h3><p>Use Claude Code, Cowork or claude.ai. Point it at the folder (in Claude Code or Cowork, open the folder as your project; in claude.ai, attach the GLB file).</p></div></li><li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg></span><div><span class="num">Step 4</span><h3>Paste the prompt and fill two gaps</h3><p>Press Copy the prompt, paste it into Claude, then replace the two parts in square brackets: the folder path and what you want placed or made.</p></div></li><li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></span><div><span class="num">Step 5</span><h3>Look at the screenshots</h3><p>Claude saves pictures in a new folder called my 3D work. Ask for changes in plain words, like "move it 50 cm to the left".</p></div></li></ol></section>
+<section class="blk" id="prompt"><div class="promptbox">
+<h2>The prompt for your Claude</h2>
+<p>Press the button, then paste it into Claude. Fill the two parts in square brackets.</p>
+<pre id="p" tabindex="0">I want to use the 3D model of the Good Cup Manila cafe in my work. The model files are in this folder on my computer: [PASTE THE FOLDER PATH HERE, for example the &quot;02 3D Model Files&quot; folder].
+
+Files in that folder:
+- 01 Whole Cafe.glb: the whole cafe with the roof off, real size in metres. Use this one by default.
+- 04 Slow Bar.glb: the Slow Bar room on its own.
+- 05 Cafe Floor Plan.glb: plain walls, doors and counters, good for measuring and layouts.
+(02 Whole Cafe.usdz and 03 Whole Cafe.blend are for iPhone and Blender. Ignore them.)
+
+Rules:
+1. Never edit, move, rename or delete the original files. Work on copies only.
+2. Save everything you make in a NEW folder next to them called &quot;my 3D work&quot;, with a short name for each output.
+3. Use plain, short words when you explain things to me.
+
+What to do:
+1. Load the GLB with three.js (a small local HTML page is fine, use a local web server if the browser blocks the file). Inspect the model: tell me the overall size in metres, the names of the main objects and rooms, and where the floor is.
+2. Take a top-view screenshot and a corner-view screenshot so I can see you loaded it correctly. Save them in &quot;my 3D work&quot;.
+3. Then do this for me: [DESCRIBE WHAT YOU WANT, for example: &quot;Put a box labeled &#x27;Cold brew stand&#x27; on the counter nearest the front door, 60 cm wide, and show me a screenshot from the entrance.&quot; or &quot;Show a 1.2 m tall sign next to the window and label it &#x27;Menu board&#x27;.&quot;]. Add the labeled object as a separate item on top of the model. Name the spot in words (for example &quot;left end of the Slow Bar counter&quot;) and tell me the coordinates you used.
+4. Take screenshots from two or three angles, save them, and tell me where they are.
+5. If something does not look right, say what you see and fix it on your copy. Do not guess sizes: ask me.</pre>
+<div class="row2"><button class="btn" id="copy" type="button">Copy the prompt</button></div>
+</div>
+<div class="check"><svg  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><p><b>Check it worked.</b> Claude tells you the size of the cafe in metres and gives you two screenshots (top view and corner view) in a new folder. If you see the cafe in them, it worked.</p></div></section>
+<section class="help"><h2>Still stuck?</h2><p>Message @kirkvee on Telegram. Say which step you are on.</p></section>
+</div></main>
+<footer><div class="wrap">Your files stay on your computer. Made by Kirk V for the Good Cup team.</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+<script>
+(function(){var b=document.getElementById("copy"),p=document.getElementById("p"),t=document.getElementById("toast");
+function done(ok){t.textContent=ok?"Copied. Now paste it into your Claude":"Press and hold the text to copy";t.classList.add("on");setTimeout(function(){t.classList.remove("on")},2200)}
+b.addEventListener("click",function(){var s=p.textContent;
+function fb(){try{var r=document.createRange();r.selectNodeContents(p);var q=getSelection();q.removeAllRanges();q.addRange(r);done(document.execCommand("copy"))}catch(e){done(false)}}
+if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(s).then(function(){done(true)},fb)}else fb();})})();
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Coffee Bag Maker handoff</title>
+<link rel="icon" href="../assets/gc-lockup.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--black:#000;--dark:#1B1B1B;--white:#fff;--crema:#EDE9E4;--cashew:#D1C8C1;--muted:#5f5852;--bdeep:#A9641F;--sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--white);color:var(--black);font-family:var(--sans);font-size:17px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column}
+.wrap{width:100%;max-width:1000px;margin:0 auto;padding:0 20px}
+header{padding:16px 0}header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lockup{display:inline-flex;align-items:center;min-height:44px}.lockup img{display:block;height:48px;width:auto}
+.back{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;color:var(--dark);font-weight:500;text-decoration:none;font-size:16px}
+.back:hover{text-decoration:underline}
+.hero{background:var(--crema);padding:40px 0 44px}
+h1{font-weight:700;font-size:clamp(38px,8vw,68px);line-height:1.05;max-width:14ch}
+.sub{margin-top:14px;font-size:19px;color:var(--dark);max-width:34ch}
+.go{margin-top:28px;background:var(--black);color:var(--white);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:12px;max-width:560px}
+.go p{color:#e8e4df;font-size:16px}
+.row2{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;background:var(--white);color:var(--black);font:700 17px var(--sans);text-decoration:none;border:0;cursor:pointer}
+.btn:hover{background:var(--crema)}
+.btn.alt{background:transparent;color:var(--white);box-shadow:inset 0 0 0 1.5px var(--white)}
+.btn.alt:hover{background:#1B1B1B}
+.btn.dark{background:var(--black);color:var(--white)}.btn.dark:hover{background:var(--dark)}
+.btn:focus-visible,.back:focus-visible{outline:3px solid var(--cashew);outline-offset:3px}
+.btn.big{width:100%}
+section.blk{padding:40px 0 0}
+h2{font-size:28px;line-height:1.15;font-weight:700;margin-bottom:16px}
+.steps{list-style:none;display:grid;gap:14px;grid-template-columns:1fr}
+.steps li{display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:start;border:1.5px solid var(--cashew);border-radius:24px;padding:20px}
+.ico{position:relative;width:56px;height:56px;border-radius:50%;background:var(--black);color:var(--white);display:grid;place-items:center}
+.ico .ic{width:28px;height:28px}
+.num{font-weight:700;font-size:15px;color:var(--bdeep)}
+.steps h3{font-size:21px;line-height:1.2;font-weight:700;margin:2px 0 6px}
+.steps p{color:var(--dark);font-size:17px}
+.two{display:grid;gap:14px;grid-template-columns:1fr}
+.panel{background:var(--crema);border-radius:24px;padding:24px}
+.panel h2{font-size:22px;margin-bottom:10px}
+.panel ul{list-style:none;display:grid;gap:10px}
+.panel li{display:grid;grid-template-columns:22px 1fr;gap:10px}
+.panel li svg{width:22px;height:22px;margin-top:2px;color:var(--bdeep)}
+.path{background:var(--black);color:var(--white);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.path h2{margin:0;font-size:22px}
+.path code{font:500 17px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;background:#1B1B1B;border-radius:14px;padding:14px 16px;word-break:break-word;display:block}
+.path p{color:#e8e4df;font-size:16px}
+.wrong{display:grid;gap:0}
+details{border-top:1.5px solid var(--cashew)}details:last-child{border-bottom:1.5px solid var(--cashew)}
+summary{list-style:none;cursor:pointer;min-height:56px;padding:14px 4px;font-weight:700;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:26px;font-weight:500;color:var(--bdeep)}
+details[open] summary::after{content:"\2212"}
+details p{padding:0 4px 18px;color:var(--dark)}
+summary:focus-visible{outline:3px solid var(--cashew);outline-offset:2px}
+.help{margin-top:40px;background:var(--black);color:var(--white);border-radius:24px;padding:28px 24px;display:flex;flex-direction:column;gap:10px}
+.help h2{margin:0;font-size:24px}.help p{color:#e8e4df}
+.pack{margin-top:14px;border:1.5px solid var(--cashew);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.pack h2{margin:0;font-size:22px}.pack p{color:var(--dark)}
+footer{margin-top:56px;border-top:1px solid var(--crema);padding:24px 0 32px;font-size:15px;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--black);color:var(--white);padding:12px 20px;border-radius:14px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+.bags{list-style:none;display:grid;gap:12px;grid-template-columns:1fr 1fr}
+.bags li{border:1.5px solid var(--cashew);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.bags b{font-size:22px;line-height:1.1}.bags span.n{font-size:15px;color:var(--muted)}
+.sw{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:15px;color:var(--dark)}
+.dot{width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--cashew);display:inline-block}
+.dot.y{background:#FFDD50}.dot.w{background:#fff}.dot.b{background:#46362B;box-shadow:none}.dot.k{background:#1B1B1B;box-shadow:none}
+.pbox{margin-top:0;background:var(--black);color:var(--white);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.pbox pre{font:400 15.5px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#1B1B1B;border-radius:16px;padding:16px;white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;max-height:340px;overflow:auto;color:#f3efea}
+.pbox .hint{color:#e8e4df;font-size:15px}
+.ok{background:var(--crema);border-radius:24px;padding:24px;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.ok svg{width:44px;height:44px;color:var(--bdeep)}.ok h2{font-size:22px;margin-bottom:6px}
+.blk>p.lead{color:var(--dark);margin-bottom:16px;max-width:60ch}
+@media (min-width:720px){.wrap{padding:0 40px}.hero{padding:64px 0 68px}.two{grid-template-columns:1fr 1fr}.bags{grid-template-columns:repeat(5,1fr)}.go{padding:28px}.btn.big{width:auto}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toast{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="lockup" href="../" aria-label="Good Cup tools home"><img src="../assets/gc-lockup.png" alt="Good Cup" width="128" height="48"></a>
+<a class="back" href="../">All tools</a>
+</div></header>
+<section class="hero"><div class="wrap">
+<h1>Coffee Bag Maker handoff</h1>
+<p class="sub">Use our exact studio bags in your own Claude work. No Blender needed.</p>
+<div class="go">
+<a class="btn big" href="https://kirkvvisitacion-stack.github.io/goodcup-bagmaker/">Open the Coffee Bag Maker</a>
+<a class="btn big" href="#prompt" style="margin-left:10px">Jump to the prompt</a>
+<p>About 5 minutes. Five steps below.</p>
+</div>
+</div></section>
+<main><div class="wrap">
+<section class="blk" aria-labelledby="why"><h2 id="why">Why this handoff exists</h2>
+<p class="lead">The studio bags were built in Blender, and only Kirk has Blender. The Coffee Bag Maker puts your sticker on the exact same bag in your browser. You get bag pictures and a 3D file, and your own Claude can place them in any layout, so nobody waits for Kirk.</p></section>
+<section class="blk" id="prompt" aria-labelledby="pt"><h2 id="pt">Copy this prompt</h2>
+<div class="pbox">
+<button class="btn" id="copy" type="button" aria-label="Copy the prompt">Copy the prompt</button>
+<pre id="p" tabindex="0">You are helping me, a Good Cup teammate, make a studio coffee bag with my own sticker on it. I do not use Blender and I do not need it.
+
+THE TOOL
+The Coffee Bag Maker is a web page that runs in the browser:
+https://kirkvvisitacion-stack.github.io/goodcup-bagmaker/
+
+WHAT I GIVE YOU
+My sticker, as a print PDF from Canva (keep the Canva file name, it holds the control number and the coffee name), or as a square PNG that is exactly 1800 x 1800 pixels.
+
+DO THIS
+1. Open the Coffee Bag Maker. If you cannot use a browser yourself, tell me each click and wait for me.
+2. Drop my sticker into the first box. Read the control number and coffee name it found. Fix them if they are wrong, because they become the file names.
+3. Check the bag it picked. Bag types: 200 g, 500 g, 1 kg, 100 g Rare, 50 g Rare. Side colours: Philippine coffee is yellow, seasonal coffee from another country is white, Espresso, AYR and Daily Driver are brown, Rare is black. If the pick looks wrong, ask me before you go on.
+4. Press Make the bag. The first bag takes about a minute.
+5. Compare the front picture with my sticker, word by word. If any word differs, stop and tell me. Tick the check box only when every word matches.
+6. Download the folder (a zip) and unzip it. It holds 01 Front, 02 Angled, 03 45 Degrees and 04 Back as PNG pictures, plus 06 Extras (the 3D model as a GLB, the front cutout, the shadow layer) and 07 the sticker PDF.
+
+IF I ASK FOR A LAYOUT
+When I ask for a post, slide, menu, poster or any layout, place the downloaded bag PNG (or the GLB for 3D) into it. These rules always apply:
+- Never change the sticker artwork. No retyping, recolouring, cropping, redrawing, upscaling or AI redraw. A model must never draw printed words.
+- Never grade, brighten or recolour the bag picture. Only move, scale and rotate the whole bag, and keep its shadow layer with it.
+- Keep the sticker centred on the bag as delivered. Do not squash or stretch the bag.
+- Use only the exact studio bag from the download, never a different bag drawn for the layout.
+- When the layout is done, compare it with the original bag PNG. Zoom into the sticker and read every word again, and check the bag colours match. Tell me what you checked.
+
+IF I NEED SOMETHING NEW
+If I need a bag shape or size that is not in the list above, stop and tell me to ask Kirk. A new bag shape needs Blender, which only Kirk has.
+
+WHERE FINISHED BAGS GO
+On the Good Cup NAS: 01 New Bags - Studio Look Library / 18 New Sticker Bags - Inbox / 2 Finished bags (pick up here)
+I upload the whole unzipped folder there myself. Tell me never to move, rename or delete anything else on the NAS.</pre>
+<button class="btn" id="copy2" type="button" aria-label="Copy the prompt">Copy the prompt</button>
+<p class="hint">Paste it into Claude Code, Cowork or claude.ai, then attach your sticker.</p>
+</div></section>
+<section class="blk" aria-labelledby="how"><h2 id="how">What to do</h2><ol class="steps"><li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg></span><div><span class="num">Step 1</span><h3>Copy the prompt</h3><p>Press the Copy button above. It copies the whole prompt in one tap.</p></div></li><li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M9 10h6M9 13h4"/></svg></span><div><span class="num">Step 2</span><h3>Paste it into your Claude</h3><p>Open Claude Code, Cowork or claude.ai. Paste the prompt, then attach your sticker: the print PDF from Canva, or a square 1800 x 1800 PNG.</p></div></li><li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><div><span class="num">Step 3</span><h3>Let Claude run the Coffee Bag Maker</h3><p>Claude opens the page, drops in your sticker, checks the bag and sides, and downloads the zip. If it cannot click for you, it tells you each click. You only read the words and say yes.</p></div></li><li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></span><div><span class="num">Step 4</span><h3>Ask for your layout</h3><p>Tell Claude what you are making: a post, a slide, a menu, a poster. Claude Design or any Claude places the bag PNG into it and keeps the rules in the prompt.</p></div></li><li><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></span><div><span class="num">Step 5</span><h3>Hand the folder in</h3><p>Upload the unzipped folder to the NAS inbox below. Then send the team message in the team chat.</p></div></li></ol></section>
+<section class="blk" aria-labelledby="bt"><h2 id="bt">Which bags exist</h2><ul class="bags"><li><b>200 g</b><span class="sw"><span class="dot y"></span>Yellow</span><span class="sw"><span class="dot w"></span>White</span><span class="sw"><span class="dot b"></span>Brown</span></li><li><b>500 g</b><span class="sw"><span class="dot y"></span>Yellow</span><span class="sw"><span class="dot w"></span>White</span><span class="sw"><span class="dot b"></span>Brown</span></li><li><b>1 kg</b><span class="sw"><span class="dot y"></span>Yellow</span><span class="sw"><span class="dot w"></span>White</span><span class="sw"><span class="dot b"></span>Brown</span></li><li><b>100 g Rare</b><span class="sw"><span class="dot k"></span>Black</span></li><li><b>50 g Rare</b><span class="sw"><span class="dot k"></span>Black</span></li></ul></section>
+<section class="blk"><div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m5 12 5 5 9-10"/></svg><div><h2>Check it worked</h2><p>You have a folder with 01 Front, 02 Angled, 03 45 Degrees and 04 Back, and every word on the bag matches your sticker.</p></div></div></section>
+<section class="blk"><div class="path">
+<h2>Hand it in here</h2>
+<code>01 New Bags - Studio Look Library / 18 New Sticker Bags - Inbox / 2 Finished bags (pick up here)</code>
+<p>Upload only into folder 18. Never move, rename or delete anything else on the NAS.</p>
+</div></section>
+<section class="blk"><div class="panel"><h2>Needs Blender only for a new bag shape</h2><p>The Coffee Bag Maker covers the five bags above. A new bag shape needs Blender on Kirk's Mac, so ask Kirk first.</p></div></section>
+<section class="help"><h2>Still stuck?</h2><p>Message @kirkvee on Telegram. Say which step you are on.</p></section>
+</div></main>
+<footer><div class="wrap">Made by Kirk V for the Good Cup team.</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+<script>
+(function(){var p=document.getElementById("p"),t=document.getElementById("toast");
+function done(ok){t.textContent=ok?"Copied":"Press and hold the prompt to copy";t.classList.add("on");setTimeout(function(){t.classList.remove("on")},1800)}
+function fb(){try{var r=document.createRange();r.selectNodeContents(p);var q=getSelection();q.removeAllRanges();q.addRange(r);done(document.execCommand("copy"))}catch(e){done(false)}}
+function go(){var s=p.textContent;
+if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(s).then(function(){done(true)},fb)}else fb()}
+["copy","copy2"].forEach(function(i){document.getElementById(i).addEventListener("click",go)})})();
+</script>
+</body>
+</html>
